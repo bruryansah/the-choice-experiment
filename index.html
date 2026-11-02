@@ -905,7 +905,107 @@
         min-height: calc(100vh - 80px);
         border-radius: 14px;
       }
-      
+
+      /* FIX 1: NAVBAR - Sembunyikan brand-tag agar PANDUAN tidak tertutup */
+      .navbar {
+        justify-content: center;
+        padding: 0 10px;
+      }
+      .brand-tag {
+        display: none;
+      }
+      .nav-links {
+        gap: 8px;
+      }
+      .nav-link {
+        font-size: 0.72rem;
+        padding: 4px 6px;
+      }
+
+      /* FIX 2 & 3: BACK BUTTON - In-flow agar tidak tumpang tindih dengan konten */
+      .back-btn {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: 10px;
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
+      }
+
+      /* Halaman yang pakai back-btn: atur flex dari atas */
+      #page-nama,
+      #page-skenario,
+      #page-detail-skenario-1,
+      #page-detail-skenario-2,
+      #page-detail-skenario-3,
+      #page-bad-ending-1, #page-good-ending-1, #page-neutral-ending-1,
+      #page-bad-ending-2, #page-good-ending-2, #page-neutral-ending-2,
+      #page-bad-ending-3, #page-good-ending-3, #page-neutral-ending-3 {
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      /* FIX 2: MASUKKAN NAMA - mac-window tidak terpotong */
+      #page-nama {
+        align-items: center;
+      }
+      #page-nama .mac-window {
+        width: 100%;
+        max-width: 100%;
+      }
+      #page-nama .heading-chunky {
+        font-size: 1.5rem;
+        align-self: center;
+      }
+
+      /* FIX 3: SKENARIO & DETAIL - konten sejajarkan ulang ke tengah setelah back-btn */
+      #page-skenario .scenario-header-wrap,
+      #page-skenario .scenario-grid,
+      #page-skenario .stars-rating,
+      #page-detail-skenario-1 .badge-pill,
+      #page-detail-skenario-2 .badge-pill,
+      #page-detail-skenario-3 .badge-pill,
+      #page-detail-skenario-1 .scenario-layout,
+      #page-detail-skenario-2 .scenario-layout,
+      #page-detail-skenario-3 .scenario-layout {
+        align-self: center;
+        width: 100%;
+      }
+
+      /* FIX 4: ENDING - tidak terpotong */
+      .ending-card-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-self: center;
+        width: 100%;
+      }
+      .ending-left-panel .img-slot {
+        height: 120px;
+      }
+      .ending-result-card {
+        padding: 16px;
+      }
+      .ending-stamp {
+        font-size: 1.6rem;
+      }
+      .ending-desc-box {
+        font-size: 0.82rem;
+        margin-bottom: 10px;
+      }
+      #page-bad-ending-1 .ending-card-container,
+      #page-good-ending-1 .ending-card-container,
+      #page-neutral-ending-1 .ending-card-container,
+      #page-bad-ending-2 .ending-card-container,
+      #page-good-ending-2 .ending-card-container,
+      #page-neutral-ending-2 .ending-card-container,
+      #page-bad-ending-3 .ending-card-container,
+      #page-good-ending-3 .ending-card-container,
+      #page-neutral-ending-3 .ending-card-container {
+        align-self: center;
+        width: 100%;
+      }
+
+      /* HERO */
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -921,6 +1021,7 @@
         height: 200px;
       }
 
+      /* SKENARIO CARD */
       .scenario-grid {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -929,6 +1030,7 @@
         height: 120px;
       }
 
+      /* NARRATIVE */
       .narrative-card {
         grid-template-columns: 1fr;
         gap: 12px;
@@ -937,23 +1039,14 @@
         height: 120px;
       }
 
-      .ending-card-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-      .ending-left-panel .img-slot {
-        height: 130px;
-      }
-      .ending-stamp {
-        font-size: 1.8rem;
-      }
-      
       .heading-chunky {
         font-size: 1.8rem;
       }
 
       .page {
-        padding: 20px 16px;
+        padding: 16px 14px;
+        position: relative;
+        min-height: auto;
       }
     }
   </style>
@@ -1007,8 +1100,7 @@
                 <img src="assets/images/hero.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Ilustrasi Hero Karakter">
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
                   <span style="font-size: 2.5rem;"></span>
-                  <span class="slot-label">[ ILUSTRASI HERO KARAKTER ]</span>
-                  <span class="slot-hint">Simpan gambar ke: <b>assets/images/hero.png</b></span>
+                  <span class="slot-label"></span>
                 </div>
               </div>
             </div>
@@ -1062,7 +1154,10 @@
               Halo, <b class="player-name-val" style="color: var(--color-gold);">Teman</b>! Tentukan pilihan dan amalkan nilai Pancasila:
             </div>
           </div>
-
+          <br>
+          <br>
+          <br>
+          <br>
           <div class="scenario-grid">
             <!-- Kartu Skenario 1 -->
             <div class="scenario-card" onclick="navigateTo('page-detail-skenario-1')">
