@@ -972,18 +972,53 @@
         width: 100%;
       }
 
-      /* FIX 4: ENDING - tidak terpotong */
+      /* FIX B: Kurangi gap di pilih skenario antara greeting & kartu */
+      #page-skenario {
+        padding-top: 10px;
+      }
+      #page-skenario .scenario-header-wrap {
+        margin-bottom: 8px;
+      }
+      #page-skenario .greeting-text {
+        margin-top: 4px;
+        font-size: 0.8rem;
+      }
+
+      /* FIX C: Beranda terlalu ke kanan di HP → center + padding seimbang */
+      #page-home {
+        padding: 20px 14px;
+        align-items: center;
+      }
+      #page-home .hero-grid {
+        justify-items: center;
+        text-align: center;
+      }
+      #page-home .hero-left {
+        align-items: center;
+        width: 100%;
+      }
+
+      /* FIX 4: ENDING - tidak terpotong kanan-kiri */
+      #page-bad-ending-1, #page-good-ending-1, #page-neutral-ending-1,
+      #page-bad-ending-2, #page-good-ending-2, #page-neutral-ending-2,
+      #page-bad-ending-3, #page-good-ending-3, #page-neutral-ending-3 {
+        overflow-x: hidden;
+        align-items: center;
+        padding: 16px 12px;
+      }
       .ending-card-container {
         grid-template-columns: 1fr;
         gap: 14px;
-        align-self: center;
         width: 100%;
+        box-sizing: border-box;
+        max-width: 100%;
       }
       .ending-left-panel .img-slot {
         height: 120px;
       }
       .ending-result-card {
         padding: 16px;
+        box-sizing: border-box;
       }
       .ending-stamp {
         font-size: 1.6rem;
@@ -991,18 +1026,6 @@
       .ending-desc-box {
         font-size: 0.82rem;
         margin-bottom: 10px;
-      }
-      #page-bad-ending-1 .ending-card-container,
-      #page-good-ending-1 .ending-card-container,
-      #page-neutral-ending-1 .ending-card-container,
-      #page-bad-ending-2 .ending-card-container,
-      #page-good-ending-2 .ending-card-container,
-      #page-neutral-ending-2 .ending-card-container,
-      #page-bad-ending-3 .ending-card-container,
-      #page-good-ending-3 .ending-card-container,
-      #page-neutral-ending-3 .ending-card-container {
-        align-self: center;
-        width: 100%;
       }
 
       /* HERO */
